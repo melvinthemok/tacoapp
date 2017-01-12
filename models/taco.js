@@ -1,14 +1,11 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var taco = sequelize.define('taco', {
-    name: DataTypes.STRING,
-    amount: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
-  return taco;
-};
+const mongoose = require('mongoose')
+
+const tacoSchema = new mongoose.Schema({
+  name: { type: String, required: true, min: [5, 'Too short'] },
+  description: { type: String },
+  completed: { type: Boolean }
+})
+
+const Taco = mongoose.model('Taco', tacoSchema)
+
+module.exports = Taco
