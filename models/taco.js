@@ -1,11 +1,10 @@
 const mongoose = require('mongoose')
 
-const tacoSchema = new mongoose.Schema({
-  name: { type: String, required: true, min: [5, 'Too short'] },
-  description: { type: String },
-  completed: { type: Boolean }
+const TacoSchema = new mongoose.Schema({
+  name: String,
+  amount: String
 })
 
-const Taco = mongoose.model('Taco', tacoSchema)
+const Taco = mongoose.model('Taco', TacoSchema)
 
 module.exports = Taco

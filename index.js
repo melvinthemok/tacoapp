@@ -7,8 +7,9 @@ var app = express()
 
 mongoose.connect('mongodb://localhost/taco-api')
 
-app.use(require('morgan')('dev'))
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(morgan('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', function (req, res) {
   res.send('hello')
@@ -16,7 +17,8 @@ app.get('/', function (req, res) {
 
 app.use('/tacos', tacosController)
 
-// we export the server so we can use it in testing
 var server = app.listen(process.env.PORT || 3000)
 console.log('Server UP')
+
+// we export the running server so we can use it in testing
 module.exports = server
