@@ -26,14 +26,16 @@ router.put('/:id', function (req, res) {
 router.delete('/:id', function (req, res) {
   Taco.findOneAndRemove({ _id: req.params.id }, function (err) {
     if (err) res.status(500).send({msg: 'error deleting taco'})
-    else res.send({msg: 'success'})
+    // else res.send({msg: 'success'})
+    else res.status(200).json({ msg: 'success', taco: taco})
   })
 })
 
 router.post('/', function (req, res) {
   Taco.create(req.body, function (err, taco) {
-    if (err) res.status(422).json({msg: 'Could not ceate taco because:' + err})
-    else res.redirect('/tacos')
+    if (err) res.status(422).json({msg: 'Could not create taco because:' + err})
+    // else res.redirect('/tacos')
+    else res.status(201).json({ msg: 'success', taco: taco})
   })
 })
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test node_modules/mocha/bin/mocha"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,10 @@
     "express": "^4.14.0",
     "mongoose": "^4.7.6",
     "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "supertest": "^2.0.1"
   }
 }

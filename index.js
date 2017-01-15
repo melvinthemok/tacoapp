@@ -17,6 +17,10 @@ app.get('/', function (req, res) {
 
 app.use('/tacos', tacosController)
 
+// if process.env.PORT is not found, default to 3000
+// PORT refers to an environment variable
+// we need to use environment variable for config
+// on the production server, they will decide the port
 var server = app.listen(process.env.PORT || 3000)
 console.log('Server UP')
 
